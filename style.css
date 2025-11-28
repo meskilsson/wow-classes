@@ -1,0 +1,161 @@
+:root {
+    --bg-main: #050609;
+    --bg-card: #11141b;
+    --bg-panel: #171b24;
+    --border-card: #262b38;
+    --accent-gold: #f3c969;
+    --accent-blue: #4aa3ff;
+    --text-main: #e6edf7;
+    --text-muted: #9aa2b4;
+    --text-weak: #6b7384;
+    --radius-lg: 10px;
+    --radius-md: 8px;
+    --shadow-soft: 0 16px 35px rgba(0, 0, 0, 0.6);
+    --gap-md: 12px;
+    --gap-lg: 16px;
+    --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: radial-gradient(circle at top, #202535 0, #050609 55%);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: var(--font-main);
+    color: var(--text-main);
+}
+
+main {
+    padding: 24px;
+}
+
+#root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Card */
+
+.character-card {
+    background: linear-gradient(145deg, var(--bg-card), #0b0e13);
+    border: 1px solid var(--border-card);
+    border-radius: var(--radius-lg);
+    padding: 16px 18px 18px;
+    margin: 0;
+    color: var(--text-main);
+    max-width: 480px;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+}
+
+.character-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.08;
+    background: radial-gradient(circle at top left, var(--accent-blue), transparent 60%);
+    pointer-events: none;
+}
+
+/* Header */
+
+.character-card h2 {
+    font-size: 1.2rem;
+    margin: 0 0 4px;
+    color: var(--accent-gold);
+    letter-spacing: 0.03em;
+}
+
+.character-card p {
+    margin: 2px 0;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+.character-card p:nth-of-type(1) {
+    margin-top: 6px;
+}
+
+.character-card p strong {
+    color: var(--text-main);
+}
+
+/* Weapon line */
+
+.character-card p:last-of-type {
+    margin-top: 8px;
+    color: var(--text-main);
+    font-size: 0.85rem;
+}
+
+/* Panels container */
+
+.stats-panels {
+    display: flex;
+    gap: var(--gap-lg);
+    margin-top: 14px;
+}
+
+/* Individual panel */
+
+.stats-panel {
+    flex: 1;
+    background: var(--bg-panel);
+    border-radius: var(--radius-md);
+    padding: 10px 12px;
+    border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.stats-panel h3 {
+    margin: 0 0 6px;
+    font-size: 0.9rem;
+    color: var(--accent-blue);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* Lists */
+
+.stats-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.stats-panel li {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.8rem;
+    padding: 2px 0;
+    color: var(--text-muted);
+}
+
+.stats-panel li span.label {
+    text-transform: capitalize;
+    color: var(--text-weak);
+}
+
+.stats-panel li span.value {
+    color: var(--text-main);
+}
+
+/* Optional: nicer stat labels in JS
+   <li><span class="label">Strength</span><span class="value">15</span></li>
+*/
+
+/* Responsive */
+
+@media (max-width: 640px) {
+    .character-card {
+        max-width: 100%;
+    }
+
+    .stats-panels {
+        flex-direction: column;
+    }
+}
