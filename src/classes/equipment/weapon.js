@@ -1,7 +1,7 @@
 
 
 export class Weapon {
-    constructor(id, name, minDamage, maxDamage, attackSpeed, rarity, statBonuses, levelRequired, allowedClasses, isTwoHanded, weaponType, extraEffects) {
+    constructor(id, name, minDamage, maxDamage, attackSpeed, rarity, statBonuses, icon, levelRequired, allowedClasses, isTwoHanded, weaponType, extraEffects) {
         this.id = id;
         this.name = name;
         this.minDamage = minDamage;
@@ -9,6 +9,7 @@ export class Weapon {
         this.attackSpeed = attackSpeed;
         this.rarity = rarity;
         this.statBonuses = statBonuses || {};
+        this.icon = icon;
         this.levelRequired = levelRequired;
         this.allowedClasses = allowedClasses || [];
         this.isTwoHanded = isTwoHanded;
