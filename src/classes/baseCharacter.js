@@ -1,3 +1,6 @@
+import { EQUIPMENT_SLOTS } from "../data/equipmentSlots.js";
+
+
 export class BaseCharacter {
     constructor(
         stats,
@@ -13,7 +16,7 @@ export class BaseCharacter {
         offhand,
         armorSet,
         accessories,
-        abilities = []
+        abilities = [],
     ) {
         this.baseHealth = stats.health ?? stats.maxHealth ?? 100;
         this.maxHealth = this.baseHealth;
@@ -73,6 +76,16 @@ export class BaseCharacter {
 
         this.abilities = abilities;
 
+
+        this.equipment = {};
+
+        EQUIPMENT_SLOTS.forEach(slot => {
+            this.equipment[slot.key] = null;
+        });
+
+
+
+        //ALWAYS KEEP LAST!
         this.recalculateStats();
     }
 
@@ -123,11 +136,16 @@ export class BaseCharacter {
         this.applyItemBonuses(this.weapon, totals);
         this.applyItemBonuses(this.offhand, totals);
 
-        if (Array.isArray(this.armorSet)) {
-            this.armorSet.forEach(armorPiece => {
-                this.applyItemBonuses(armorPiece, totals);
-            });
-        }
+        Object.values(this.equipment).forEach(item => {
+            if (!item) return;
+
+            if (item.armorValue) {
+                totals.armor += item.armorValue;
+            }
+
+            this.applyItemBonuses(item, totals);
+        });
+
 
         if (Array.isArray(this.accessories)) {
             this.accessories.forEach(accessory => {

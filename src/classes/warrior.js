@@ -30,7 +30,9 @@ export class Warrior extends BaseCharacter {
             offhand,
             armorSet,
             accessories,
-            abilities
+            abilities,
         );
+
+        this.equipment.mainHand = this.weapon
     }
 }

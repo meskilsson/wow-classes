@@ -4,12 +4,14 @@ import { warriorBaseStats, paladinBaseStats } from "../data/classBaseStats.js";
 import { warriorDefaultAbilities } from "../data/abilities/warriorAbilities.js";
 import { paladinDefaultAbilities } from "../data/abilities/paladinAbilities.js";
 import { createWeapon } from "../factory/itemFactory.js";
+import { createArmor } from "../factory/armorFactory.js";
 
 export function createCharacter(classType, name, race, faction) {
     if (classType === "Warrior") {
         const starterSword = createWeapon("starter_sword");
+        const starterChest = createArmor("starter_chest_mail");
 
-        return new Warrior(
+        const warrior = new Warrior(
             warriorBaseStats,
             name,
             race,
@@ -23,12 +25,18 @@ export function createCharacter(classType, name, race, faction) {
             [],
             warriorDefaultAbilities
         );
+
+        warrior.equipment.chest = starterChest;
+        warrior.recalculateStats();
+        return warrior;
+
     }
 
     if (classType === "Paladin") {
         const starterSword = createWeapon("starter_sword");
+        const starterChest = createArmor("starter_chest_mail");
 
-        return new Paladin(
+        const paladin = new Paladin(
             paladinBaseStats,
             name,
             race,
@@ -42,5 +50,9 @@ export function createCharacter(classType, name, race, faction) {
             [],
             paladinDefaultAbilities
         );
+        paladin.equipment.chest = starterChest;
+        paladin.recalculateStats();
+
+        return paladin;
     }
 }

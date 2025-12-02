@@ -1,6 +1,7 @@
 
 
 export const EQUIPMENT_SLOTS = [
+
     {
         key: "head",
         label: "Head",

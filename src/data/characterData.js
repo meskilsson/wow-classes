@@ -1,4 +1,7 @@
 export function getCharacterData(character) {
+
+    const mainHand = character.equipment?.mainHand || character.weapon;
+
     return {
         name: character.name,
         classType: character.classType,
@@ -32,14 +35,14 @@ export function getCharacterData(character) {
             resistances: character.resistances
         },
 
-        weapon: character.weapon
+        weapon: mainHand
             ? {
-                name: character.weapon.name,
-                type: character.weapon.weaponType,
-                minDamage: character.weapon.minDamage,
-                maxDamage: character.weapon.maxDamage,
-                attackSpeed: character.weapon.attackSpeed,
-                dps: character.weapon.getDPS(),
+                name: mainHand.name,
+                type: mainHand.weaponType,
+                minDamage: mainHand.minDamage,
+                maxDamage: mainHand.maxDamage,
+                attackSpeed: mainHand.attackSpeed,
+                dps: mainHand.getDPS(),
             }
             : null,
 

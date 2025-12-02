@@ -20,20 +20,21 @@ export const WEAPONS = [
     },
     {
         id: "starter_sword",
-        name: "training_sword",
-        kind: "",
-        rarity: "",
+        name: "Training Sword",
+        kind: "weapon-1h",
+        rarity: "common",
         levelRequired: 1,
-        allowedClasses: [],
+        allowedClasses: ["Warrior", "Paladin"],
         statBonuses: {},
         icon: "",
 
-        minDamage: 0,
-        maxDamage: 0,
-        attackSpeed: 0,
+        minDamage: 5,
+        maxDamage: 12,
+        attackSpeed: 2.4,
         isTwoHanded: false,
-        weaponType: "",
+        weaponType: "sword",
         extraEffects: [],
     },
+
 
 ]

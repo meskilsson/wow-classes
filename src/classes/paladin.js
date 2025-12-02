@@ -32,5 +32,6 @@ export class Paladin extends BaseCharacter {
             accessories,
             abilities
         );
+        this.equipment.mainHand = this.weapon
     }
 }

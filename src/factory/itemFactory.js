@@ -1,4 +1,4 @@
-import { ITEM_MAP } from "../data/items.js";
+import { ITEM_MAP } from "../data/items/index.js";
 import { Weapon } from "../classes/equipment/weapon.js";
 
 export function createWeapon(id) {

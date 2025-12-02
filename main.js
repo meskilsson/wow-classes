@@ -19,5 +19,6 @@ if (typeof myPaladin.recalculateStats === "function") {
 console.log('Warrior weapon:', myWarrior.weapon);
 console.log('Warrior DPS:', myWarrior.weapon.getDPS());
 
+
 renderCharacterCard(myWarrior, root);
 renderCharacterCard(myPaladin, root);
