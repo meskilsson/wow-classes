@@ -1,26 +1,12 @@
-import { Warrior, warriorDefaultAbilities } from "./src/classes/warrior.js";
 import { renderCharacterCard } from "./src/rendering/card.js";
-import { starterSword } from "./src/weapons/onehandswords.js";
-import { warriorBaseStats } from "./src/data/classBaseStats.js";
+import { createCharacter } from "./src/characters/starterCharacters.js";
 
 
 const root = document.getElementById('root');
 
+const myWarrior = createCharacter('Warrior', 'Mattias', 'Human', 'Alliance');
+const myPaladin = createCharacter('Paladin', 'Derp', 'Draenei', 'Alliance');
 
-
-const myWarrior = new Warrior(
-    warriorBaseStats,
-    'Retard',
-    'Human',
-    'Alliance',
-    1,
-    0,
-    100,
-    starterSword,
-    null,
-    [],
-    [],
-    warriorDefaultAbilities
-);
 
 renderCharacterCard(myWarrior, root);
+renderCharacterCard(myPaladin, root);

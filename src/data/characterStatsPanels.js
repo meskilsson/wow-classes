@@ -16,10 +16,10 @@ export function getCharacterStatsPanels(character) {
 
     panels.combatStats = {
         attackPower: data.stats.attackPower,
-        critChance: data.stats.critChance,
-        dodgeChance: data.stats.dodgeChance,
-        parryChance: data.stats.parryChance,
-        blockChance: data.stats.blockChance,
+        critChance: `${data.stats.critChance}%`,
+        dodgeChance: `${data.stats.dodgeChance}%`,
+        parryChance: `${data.stats.parryChance}%`,
+        blockChance: `${data.stats.blockChance}%`,
         armor: data.stats.armor
     };
 
