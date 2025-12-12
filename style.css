@@ -148,6 +148,51 @@ main {
    <li><span class="label">Strength</span><span class="value">15</span></li>
 */
 
+.character-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 480px;
+}
+
+.inventory-panel {
+  background: var(--bg-panel);
+  border: 1px solid rgba(255, 255, 255, 0.03);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+}
+
+.inventory-panel h3 {
+  margin: 0 0 8px;
+  font-size: 0.9rem;
+  color: var(--accent-blue);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.inventory-empty {
+  margin: 0;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.inventory-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  margin: 6px 0;
+  padding: 8px 10px;
+  border-radius: 8px;
+  border: 1px solid var(--border-card);
+  background: linear-gradient(145deg, var(--bg-card), #0b0e13);
+  color: var(--text-main);
+  cursor: pointer;
+}
+
+.inventory-item:hover {
+  border-color: rgba(243, 201, 105, 0.4);
+}
+
 /* Responsive */
 
 @media (max-width: 640px) {

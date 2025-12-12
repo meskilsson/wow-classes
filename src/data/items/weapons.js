@@ -3,7 +3,7 @@
 export const WEAPONS = [
     {
         id: "god_sword",
-        name: "Eskil",
+        name: "Eskil's God Sword of Divinity",
         kind: "weapon-2h",
         rarity: "legendary",
         levelRequired: 1,
@@ -21,6 +21,23 @@ export const WEAPONS = [
     {
         id: "starter_sword",
         name: "Training Sword",
+        kind: "weapon-1h",
+        rarity: "common",
+        levelRequired: 1,
+        allowedClasses: ["Warrior", "Paladin"],
+        statBonuses: {},
+        icon: "",
+
+        minDamage: 5,
+        maxDamage: 12,
+        attackSpeed: 2.4,
+        isTwoHanded: false,
+        weaponType: "sword",
+        extraEffects: [],
+    },
+    {
+        id: "banana",
+        name: "Isabelle's Mega Banana",
         kind: "weapon-1h",
         rarity: "common",
         levelRequired: 1,

@@ -17,6 +17,7 @@ export class BaseCharacter {
         armorSet,
         accessories,
         abilities = [],
+        inventory,
     ) {
         this.baseHealth = stats.health ?? stats.maxHealth ?? 100;
         this.maxHealth = this.baseHealth;
@@ -82,6 +83,7 @@ export class BaseCharacter {
         EQUIPMENT_SLOTS.forEach(slot => {
             this.equipment[slot.key] = null;
         });
+        this.inventory = [];
 
 
 

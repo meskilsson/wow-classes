@@ -14,6 +14,7 @@ export function createWeapon(id) {
         def.minDamage,
         def.maxDamage,
         def.attackSpeed,
+        def.kind,
         def.rarity,
         def.statBonuses,
         def.icon,
