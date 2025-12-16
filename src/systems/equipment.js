@@ -15,9 +15,11 @@ export function equipItem(character, item) {
   if (item.slot) {
     candidateSlots = [item.slot];
   } else {
-    candidateSlots = EQUIPMENT_SLOTS
-      .filter((slotDef) => Array.isArray(slotDef.allowedItemKinds) && slotDef.allowedItemKinds.includes(item.kind))
-      .map((slotDef) => slotDef.key);
+    candidateSlots = EQUIPMENT_SLOTS.filter(
+      (slotDef) =>
+        Array.isArray(slotDef.allowedItemKinds) &&
+        slotDef.allowedItemKinds.includes(item.kind)
+    ).map((slotDef) => slotDef.key);
   }
 
   if (candidateSlots.length === 0) return { success: false, reason: "no-slot" };
@@ -45,7 +47,8 @@ export function equipItem(character, item) {
     else if (character.equipment?.trinket2 == null) chosenSlot = "trinket2";
     else chosenSlot = "trinket1";
   } else {
-    chosenSlot = candidateSlots.length === 1 ? candidateSlots[0] : candidateSlots[0];
+    chosenSlot =
+      candidateSlots.length === 1 ? candidateSlots[0] : candidateSlots[0];
   }
 
   if (!character.equipment || !(chosenSlot in character.equipment)) {
@@ -55,7 +58,10 @@ export function equipItem(character, item) {
   const oldItem = character.equipment[chosenSlot] ?? null;
   character.equipment[chosenSlot] = item;
 
-  if (chosenSlot === "mainHand" && (item.isTwoHanded || item.kind === "weapon-2h")) {
+  if (
+    chosenSlot === "mainHand" &&
+    (item.isTwoHanded || item.kind === "weapon-2h")
+  ) {
     character.equipment.offHand = null;
   }
 
@@ -69,3 +75,31 @@ export function equipItem(character, item) {
   return { success: true, slot: chosenSlot, replaced: oldItem };
 }
 
+export function unequipItem(character, slotKey) {
+  if (!character || !slotKey) {
+    return { success: false, reason: "invalid-input" };
+  }
+
+  if (!character.equipment || !(slotKey in character.equipment)) {
+    return { success: false, reason: "invalid-slot" };
+  }
+
+  const removedItem = character.equipment[slotKey];
+  if (!removedItem) {
+    return { success: false, reason: "slot-empty" };
+  }
+
+  character.equipment[slotKey] = null;
+
+  character.weapon = character.equipment.mainHand ?? null;
+  character.offhand = character.equipment.offHand ?? null;
+
+  if (!Array.isArray(character.inventory)) character.inventory = [];
+  character.inventory.push(removedItem.id);
+
+  if (typeof character.recalculateStats === "function") {
+    character.recalculateStats();
+  }
+
+  return { success: true, slot: slotKey, removed: removedItem };
+}
